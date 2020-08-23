@@ -1,0 +1,10 @@
+<app-accordion-item-header (clicked)="onHeaderClick()">
+  <ng-template
+    [ngTemplateOutlet]="headerTemplate"
+    [ngTemplateOutletContext]="headerContext"
+  ></ng-template>
+</app-accordion-item-header>
+
+<app-accordion-item-content [expanded]="expanded">
+  <ng-template [ngTemplateOutlet]="contentTemplate"></ng-template>
+</app-accordion-item-content>
