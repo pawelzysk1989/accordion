@@ -1,25 +1,38 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { createHostFactory, SpectatorHost } from '@ngneat/spectator';
 import { AccordionComponent } from './accordion.component';
+import { AccordionItemComponent } from '../accordion-item/accordion-item.component';
+import { AccordionItemHeaderComponent } from '../accordion-item-header/accordion-item-header.component';
+import { AccordionItemContentComponent } from '../accordion-item-content/accordion-item-content.component';
 
 describe('AccordionComponent', () => {
-  let component: AccordionComponent;
-  let fixture: ComponentFixture<AccordionComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AccordionComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AccordionComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  let spectator: SpectatorHost<AccordionComponent>;
+  const createHost = createHostFactory({
+    component: AccordionComponent,
+    declarations: [
+      AccordionItemComponent,
+      AccordionItemHeaderComponent,
+      AccordionItemContentComponent,
+    ],
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should toggle the content when clicking on the header', () => {
+    spectator = createHost(`
+      <app-accordion>
+        <app-accordion-item>
+          <ng-template #header>
+            <h2>Header</h2>
+          </ng-template>
+          <ng-template #content>
+            <p>Content</p>
+          </ng-template>
+        </app-accordion-item>
+      </app-accordion>
+    `);
+
+    expect('p').not.toExist();
+    spectator.click('h2');
+    expect('p').toExist();
+    spectator.click('h2');
+    expect('p').not.toExist();
   });
 });

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AccordionModule } from './widgets/accordion/accordion.module';
+import { ExamplesModule } from './widgets/examples/examples.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { AccordionModule } from './widgets/accordion/accordion.module';
   ],
   imports: [
     BrowserModule,
-    AccordionModule
+    AccordionModule,
+    ExamplesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

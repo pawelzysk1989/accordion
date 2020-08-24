@@ -19,14 +19,20 @@ interface HeaderContext {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccordionItemComponent {
+  private isExpanded = false;
   @ContentChild('header')
   headerTemplate: TemplateRef<any> | null = null;
 
   @ContentChild('content')
   contentTemplate: TemplateRef<any> | null = null;
 
-  @Input()
-  expanded = false;
+  @Input() set expanded(expanded: boolean) {
+    this.isExpanded = expanded;
+  }
+
+  get expanded(): boolean {
+    return this.isExpanded;
+  }
 
   @Output()
   headerClicked = new EventEmitter<void>();

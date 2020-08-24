@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-accordion-item-content',
@@ -6,7 +6,4 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
   styleUrls: ['./accordion-item-content.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AccordionItemContentComponent {
-  @Input()
-  expanded = false;
-}
+export class AccordionItemContentComponent {}
