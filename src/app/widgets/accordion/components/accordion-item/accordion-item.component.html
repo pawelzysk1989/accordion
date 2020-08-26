@@ -5,8 +5,5 @@
   ></ng-template>
 </app-accordion-item-header>
 
-<app-accordion-item-content>
-  <ng-container *ngIf="expanded">
-    <ng-template [ngTemplateOutlet]="contentTemplate"></ng-template>
-  </ng-container>
+<app-accordion-item-content [expanded]="expanded" [template]="contentTemplate">
 </app-accordion-item-content>
